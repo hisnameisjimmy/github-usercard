@@ -3,22 +3,6 @@
            https://api.github.com/users/<your name>
 */
 
-// const githubData = ((username) => {
-//   axios.get('https://api.github.com/users/' + username)
-//     .then((results) => {
-//       return results;
-//     });
-// });
-
-
-  // axios.get('https://api.github.com/users/' + 'hisnameisjimmy')
-  //   .then((results) => {
-  //     return results;
-  //   });
-
-
-
-
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -109,81 +93,14 @@ const newCard = (githubData) => {
 
 cardUsers = ['hisnameisjimmy', 'tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell'];
 
-// cardUsers = ['hisnameisjimmy'];
-
-// const renderCards = cardUsers.forEach((name) => {
-//   axios.get('https://api.github.com/users/' + name)
-//     .then((results) => {
-//       //return results;
-//       newCard(results);
-//     });
-// });
-
 const card = document.querySelector('.cards');
-
-// const jimmy = axios.get('https://api.github.com/users/hisnameisjimmy')
-//     .then((results) => {
-//       return results;
-//     });
 
 cardUsers.forEach((user) => {
   axios.get('https://api.github.com/users/' + user)
     .then((results) => {
-      //console.log(results);
-      // for (i = 0; i < results.length; i++){
-      //   card.appendChild(newCard(results.[i]));
-      // }
-      // Object.keys(results).forEach((element) => {
-      //   card.appendChild(newCard(element));
-      // }); 
         card.appendChild(newCard(results.data));
     });
 }); 
-
-// jimmy.forEach((element) => {
-//   card.appendChild(newCard(element));
-// }); 
-
-// card.appendChild(newCard(user));
-
-
-// const jimmy = [{
-//   "login": "hisnameisjimmy",
-//   "id": 740373,
-//   "node_id": "MDQ6VXNlcjc0MDM3Mw==",
-//   "avatar_url": "https://avatars3.githubusercontent.com/u/740373?v=4",
-//   "gravatar_id": "",
-//   "url": "https://api.github.com/users/hisnameisjimmy",
-//   "html_url": "https://github.com/hisnameisjimmy",
-//   "followers_url": "https://api.github.com/users/hisnameisjimmy/followers",
-//   "following_url": "https://api.github.com/users/hisnameisjimmy/following{/other_user}",
-//   "gists_url": "https://api.github.com/users/hisnameisjimmy/gists{/gist_id}",
-//   "starred_url": "https://api.github.com/users/hisnameisjimmy/starred{/owner}{/repo}",
-//   "subscriptions_url": "https://api.github.com/users/hisnameisjimmy/subscriptions",
-//   "organizations_url": "https://api.github.com/users/hisnameisjimmy/orgs",
-//   "repos_url": "https://api.github.com/users/hisnameisjimmy/repos",
-//   "events_url": "https://api.github.com/users/hisnameisjimmy/events{/privacy}",
-//   "received_events_url": "https://api.github.com/users/hisnameisjimmy/received_events",
-//   "type": "User",
-//   "site_admin": false,
-//   "name": "Jimmy Hooker",
-//   "company": null,
-//   "blog": "",
-//   "location": "United States",
-//   "email": null,
-//   "hireable": null,
-//   "bio": null,
-//   "public_repos": 26,
-//   "public_gists": 6,
-//   "followers": 4,
-//   "following": 3,
-//   "created_at": "2011-04-20T01:35:08Z",
-//   "updated_at": "2019-09-13T22:03:26Z"
-// }];
-
-// jimmy.forEach((element) => {
-//   card.appendChild(newCard(element));
-// }); 
 
 
 /* List of LS Instructors Github username's: 
