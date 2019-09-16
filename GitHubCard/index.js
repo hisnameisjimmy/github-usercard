@@ -46,6 +46,63 @@ const followersArray = [];
 
 */
 
+const newCard = (githubData) => {
+  const
+    card = document.createElement('div'),
+    cardImage = document.createElement('img'),
+    cardInfo = document.createElement('div'),
+    cardName = document.createElement('h3'),
+    cardUsername= document.createElement('p'),
+    cardLocation = document.createElement('p'),
+    cardProfile = document.createElement('p'),
+    cardProfileLink = document.createElement('a'),
+    cardFollowers = document.createElement('p'),
+    cardFollowing = document.createElement('p'),
+    cardBio = document.createElement('p');
+
+  cardImage.src = githubData.avatar_url;
+  cardName.textContent = githubData.name;
+  cardUsername.textContent = githubData.login;
+  cardLocation.textContent = `Location: ${githubData.location}`;
+  cardProfileLink.setAttribute('href', githubData.html_url);
+  cardProfileLink.textContent = githubData.html_url;
+  cardProfile.textContent = `Profile: `;
+  cardFollowers.textContent = `Followers: ${githubData.followers}`;
+  cardFollowing.textContent = `Following: ${githubData.following}`;
+  cardBio.textContent = `Bio: ${githubData.bio}`;
+
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  cardName.classList.add('name');
+  cardUsername.classList.add('username');
+  cardUsername.classList.add('username');
+  
+  card.appendChild(cardImage);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(cardName);
+  cardInfo.appendChild(cardUsername);
+  cardInfo.appendChild(cardLocation);
+  cardInfo.appendChild(cardProfile);
+  cardProfile.appendChild(cardProfileLink);
+  cardInfo.appendChild(cardFollowers);
+  cardInfo.appendChild(cardFollowing);
+  cardInfo.appendChild(cardBio);
+
+  return card;
+}
+
+cardUsers = ['hisnameisjimmy', 'tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell'];
+
+const card = document.querySelector('.cards');
+
+cardUsers.forEach((user) => {
+  axios.get('https://api.github.com/users/' + user)
+    .then((results) => {
+        card.appendChild(newCard(results.data));
+    });
+}); 
+
+
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
